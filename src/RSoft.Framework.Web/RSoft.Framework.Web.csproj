@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Rodrigo Rodrigues</Authors>
+    <Company>RSoft</Company>
+    <Description>Standard web development framework adopted by RSoft (DDD)</Description>
+    <PackageLicenseFile>license.txt</PackageLicenseFile>
+    <PackageIcon>rsoft-framework-web-icon-32x32.png</PackageIcon>
+    <RepositoryUrl>https://github.com/rodriguesrm/rsoft-framework</RepositoryUrl>
+    <PackageTags>rsoft framwork ddd domain drive design web</PackageTags>
+    <Version>1.0.0-rc1.0</Version>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>bin\Debug\netstandard2.1\</OutputPath>
+    <DocumentationFile>RSoft.Framework.Web.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>RSoft.Framework.Web.xml</DocumentationFile>
+    <OutputPath>bin\Release\netstandard2.1\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="RSoft.Framework.Web.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="RSoft.Framework.Web.xml">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.1.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="license.txt">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="rsoft-framework-web-icon-32x32.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
