@@ -53,6 +53,11 @@ namespace RSoft.Framework.Web.Extensions
             SwaggerOptions swaggerOptions = new SwaggerOptions();
             configuration.GetSection("Swagger").Bind(swaggerOptions);
 
+            swaggerOptions.Title = !string.IsNullOrWhiteSpace(swaggerOptions.Title) ? swaggerOptions.Title : "API Title (see documentation)";
+            swaggerOptions.Description = !string.IsNullOrWhiteSpace(swaggerOptions.Description) ? swaggerOptions.Description : "API Description (see documentation)";
+            swaggerOptions.Contact = !string.IsNullOrWhiteSpace(swaggerOptions.Contact) ? swaggerOptions.Contact : "API Contact (see documentation)";
+            swaggerOptions.Uri = !string.IsNullOrWhiteSpace(swaggerOptions.Uri) ? swaggerOptions.Uri : "http://api.uri.see.documentation";
+
             services.AddVersionedApiExplorer(p =>
             {
                 p.GroupNameFormat = @"'v'VVVV";
