@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace RSoft.Framework.Web.Options
+﻿namespace RSoft.Framework.Web.Options
 {
 
     /// <summary>

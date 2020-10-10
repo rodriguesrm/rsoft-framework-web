@@ -47,7 +47,7 @@ namespace RSoft.Framework.Web.Options
         public Func<Task<string>> JtiGenerator => () => Task.FromResult(Guid.NewGuid().ToString());
 
         /// <summary>
-        /// A chave de assinatura a ser usada ao gerar tokens.
+        /// The subscription key to be used when generating tokens.
         /// </summary>
         public SigningCredentials Credentials { get; set; }
     }
