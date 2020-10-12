@@ -10,17 +10,17 @@
     <PackageIcon>rsoft-framework-web-icon-32x32.png</PackageIcon>
     <RepositoryUrl>https://github.com/rodriguesrm/rsoft-framework</RepositoryUrl>
     <PackageTags>rsoft framwork ddd domain drive design web</PackageTags>
-    <Version>1.0.0-rc1.2</Version>
+    <Version>1.0.0-rc1.3</Version>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath>bin\Debug\netstandard2.1\</OutputPath>
+    <OutputPath>bin\Debug\netcoreapp3.1\</OutputPath>
     <DocumentationFile>RSoft.Framework.Web.xml</DocumentationFile>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>RSoft.Framework.Web.xml</DocumentationFile>
-    <OutputPath>bin\Release\netstandard2.1\</OutputPath>
+    <OutputPath>bin\Release\netcoreapp3.1\</OutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -34,6 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="3.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.8" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.1" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning.ApiExplorer" Version="4.1.1" />
