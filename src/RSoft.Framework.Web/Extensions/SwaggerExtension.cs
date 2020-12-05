@@ -30,7 +30,7 @@ namespace RSoft.Framework.Web.Extensions
         public static IServiceCollection AddSwaggerGenerator(this IServiceCollection services, IConfiguration configuration, string assemblyName)
         {
             string[] versions = new string[] { "1.0" };
-            return AddSwaggerGenerator(services, configuration, assemblyName, versions);
+            return AddSwaggerGenerator(services, configuration, assemblyName, true, versions);
         }
 
         /// <summary>
@@ -39,8 +39,22 @@ namespace RSoft.Framework.Web.Extensions
         /// <param name="services">Service collection object instance</param>
         /// <param name="configuration">Configuration object instance</param>
         /// <param name="assemblyName">API application assembly name</param>
+        /// <param name="useAppKeyScope">Indicates if the application is outside the RSoft ecosystem.</param>
+        public static IServiceCollection AddSwaggerGenerator(this IServiceCollection services, IConfiguration configuration, string assemblyName, bool useAppKeyScope)
+        {
+            string[] versions = new string[] { "1.0" };
+            return AddSwaggerGenerator(services, configuration, assemblyName, useAppKeyScope, versions);
+        }
+
+        /// <summary>
+        /// Adds the Swagger Documentation generator
+        /// </summary>
+        /// <param name="services">Service collection object instance</param>
+        /// <param name="configuration">Configuration object instance</param>
+        /// <param name="assemblyName">API application assembly name</param>
+        /// <param name="useAppKeyScope">Indicates if the application is outside the RSoft ecosystem.</param>
         /// <param name="versions">Array list API versions</param>
-        public static IServiceCollection AddSwaggerGenerator(this IServiceCollection services, IConfiguration configuration, string assemblyName, params string[] versions)
+        public static IServiceCollection AddSwaggerGenerator(this IServiceCollection services, IConfiguration configuration, string assemblyName, bool useAppKeyScope, params string[] versions)
         {
 
             bool isProd = (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == Environments.Production);
@@ -65,7 +79,8 @@ namespace RSoft.Framework.Web.Extensions
 
                 c.DocumentFilter<ReplaceVersionWithExactValueInPathFilter>();
                 c.OperationFilter<RemoveVersionParameterFilter>();
-                c.OperationFilter<AddAppKeyHeaderParameter>();
+                if (useAppKeyScope)
+                    c.OperationFilter<AddAppKeyHeaderParameter>();
                 c.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
                 c.EnableAnnotations();
 
